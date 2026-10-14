@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christopher Palac — Product, GTM Strategy & Data Science Portfolio</title>
+  <meta name="description" content="Christopher Palac — Philadelphia-based Product, GTM Strategy, Management Consulting, and Data Science Leader. Manager at Adaptive USA & M.A.S. Data Science Candidate at Illinois Tech.">
+  <meta name="author" content="Christopher Palac">
+  <meta property="og:title" content="Christopher Palac — Product, GTM Strategy & Data Science Portfolio">
+  <meta property="og:description" content="Building 0-to-1 Products, GTM Engines & Data-Driven Strategy across Fortune 500, hyper-growth startup, and nonprofit environments.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/christopher-palac-headshot.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-blue-500 selection:text-white transition-colors duration-200">
+
+  <!-- Sticky Top Navigation -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/85 border-b border-slate-800/80 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <!-- Brand / Identity -->
+      <button type="button" onclick="switchPage('home')" class="flex items-center gap-3 text-left group focus:outline-none">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-base shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-transform">
+          CP
+        </div>
+        <div>
+          <div class="font-bold text-white tracking-tight text-sm sm:text-base flex items-center gap-2">
+            Christopher Palac
+            <span class="hidden md:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+              Philadelphia, PA
+            </span>
+          </div>
+          <div class="text-xs text-slate-400 hidden sm:block">Product • GTM Strategy • Management Consulting • Data Science</div>
+        </div>
+      </button>
+
+      <!-- Desktop Navigation Tabs -->
+      <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+        <button type="button" id="nav-home" onclick="switchPage('home')" class="nav-tab px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all bg-blue-600 text-white shadow">
+          Home
+        </button>
+        <button type="button" id="nav-about" onclick="switchPage('about')" class="nav-tab px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+          About Me
+        </button>
+        <button type="button" id="nav-resume" onclick="switchPage('resume')" class="nav-tab px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+          Resume
+        </button>
+        <button type="button" id="nav-projects" onclick="switchPage('projects')" class="nav-tab px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+          Projects
+        </button>
+        <button type="button" id="nav-hobbies" onclick="switchPage('hobbies')" class="nav-tab px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+          Hobbies
+        </button>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="openContactModal()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-blue-600/25 transition-all flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Connect</span>
+        </button>
+        <!-- Mobile Menu Toggle -->
+        <button type="button" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu" class="md:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-950 px-4 pt-2 pb-4 space-y-1">
+      <button type="button" id="mnav-home" onclick="switchPage('home')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium bg-blue-600 text-white">Home Page</button>
+      <button type="button" id="mnav-about" onclick="switchPage('about')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">About Me Page</button>
+      <button type="button" id="mnav-resume" onclick="switchPage('resume')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Resume Page</button>
+      <button type="button" id="mnav-projects" onclick="switchPage('projects')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Projects Page</button>
+      <button type="button" id="mnav-hobbies" onclick="switchPage('hobbies')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Hobbies Page</button>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+
+    <!-- ==========================================
+         1. HOME PAGE
+         ========================================== -->
+    <section id="page-home" class="page-section active space-y-12">
+      <!-- Hero Banner -->
+      <div class="relative rounded-3xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-7 p-6 sm:p-10 lg:p-12 space-y-6 z-10">
+            <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Manager @ Adaptive USA • M.A.S. Data Science Candidate @ Illinois Tech ('26)</span>
+            </div>
+
+            <div class="space-y-3">
+              <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Building 0-to-1 Products, <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">GTM Engines</span> &amp; Data-Driven Strategy.
+              </h1>
+              <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+                Hi, I'm <strong class="text-white font-semibold">Christopher Palac</strong> — a Philadelphia-based Product, Strategy, and Management Consulting leader with 10+ years of experience translating market insights and applied analytics into commercial growth across Fortune 500, hyper-growth startup, and nonprofit environments.
+              </p>
+            </div>
+
+            <!-- Hero CTAs -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button type="button" onclick="switchPage('projects')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/25 transition-all flex items-center gap-2">
+                <span>Explore Projects &amp; Case Studies</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </button>
+              <button type="button" onclick="switchPage('resume')" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold text-sm border border-slate-700 transition-all">
+                View Full Resume
+              </button>
+
+            </div>
+
+            <!-- Quick Credentials Strip -->
+            <div class="pt-4 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-slate-400">
+              <div>
+                <div class="text-slate-200 font-semibold">Graduate Education</div>
+                <div>M.A.S. Data Science (IIT) • MBA (University of Dayton)</div>
+              </div>
+              <div>
+                <div class="text-slate-200 font-semibold">Certifications</div>
+                <div>Wharton AI for Business • Forrester CX</div>
+              </div>
+              <div>
+                <div class="text-slate-200 font-semibold">Philanthropy</div>
+                <div>Co-Founder &amp; President, Mustache Masters</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Image Slot -->
+          <div class="lg:col-span-5 relative h-full min-h-[340px] sm:min-h-[420px] lg:min-h-[480px]">
+            <img src="assets/images/christopher-palac-headshot.jpg" alt="Christopher Palac — Product, GTM Strategy & Data Science Leader" class="w-full h-full object-cover object-top max-w-full" />
+            <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-slate-900 via-slate-900/25 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-slate-800 rounded-2xl p-4 shadow-xl">
+              <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+                <span class="font-semibold text-blue-400 uppercase tracking-wider">Current Focus (2026)</span>
+                <span>Philadelphia, PA</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-200 font-medium">
+                Leading enterprise client engagements &amp; strategic growth initiatives at <strong class="text-white">Adaptive USA</strong> while completing my Master of Applied Science in Data Science at <strong class="text-white">Illinois Tech</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantified Career Impact Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-blue-500/40 transition-all">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white">$3M+</div>
+          <div class="text-xs font-semibold text-blue-400 uppercase tracking-wider mt-1">0-to-1 Product Revenue</div>
+          <p class="text-xs text-slate-400 mt-1.5">Generated over 3 years from proprietary research &amp; scoring product (+15% top-line lift).</p>
+        </div>
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-blue-500/40 transition-all">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white">10x</div>
+          <div class="text-xs font-semibold text-indigo-400 uppercase tracking-wider mt-1">Startup Valuation Growth</div>
+          <p class="text-xs text-slate-400 mt-1.5">Scaled Nerd Street IT infrastructure &amp; licensing from seed to $20M valuation in 1 year.</p>
+        </div>
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-blue-500/40 transition-all">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white">21+</div>
+          <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mt-1">Enterprise Engagements</div>
+          <p class="text-xs text-slate-400 mt-1.5">Advised Fortune 500 &amp; mid-market leaders across $120B+ Telecom, $38B+ Pharma, $35B+ Banking &amp; $11B+ Building Materials.</p>
+        </div>
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-blue-500/40 transition-all">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white">+33%</div>
+          <div class="text-xs font-semibold text-amber-400 uppercase tracking-wider mt-1">Delivery Velocity</div>
+          <p class="text-xs text-slate-400 mt-1.5">Improved product roadmap delivery timelines across 10 core offerings &amp; partner integrations.</p>
+        </div>
+        <div class="col-span-2 md:col-span-1 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-blue-500/40 transition-all">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white">$122K+</div>
+          <div class="text-xs font-semibold text-purple-400 uppercase tracking-wider mt-1">Charity Fundraised</div>
+          <p class="text-xs text-slate-400 mt-1.5">Raised for men's mental &amp; physical health across 6 Mustache Masters esports seasons (1.6M+ mins watched).</p>
+        </div>
+      </div>
+
+      <!-- Portfolio Section Directory Cards -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-white">Explore My Portfolio</h2>
+            <p class="text-sm text-slate-400">Jump directly into my background, full curriculum vitae, flagship case studies, or personal passions.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Card: About Me -->
+          <div class="bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all group">
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center font-bold">01</div>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">About Me Page</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                My operating philosophy at the intersection of consulting rigor, operator execution, and data science—plus my cross-industry footprint.
+              </p>
+            </div>
+            <button type="button" onclick="switchPage('about')" class="mt-6 w-full py-2.5 px-4 rounded-xl bg-slate-800 group-hover:bg-blue-600 text-slate-200 group-hover:text-white text-xs font-semibold transition-all flex items-center justify-between">
+              <span>Read My Story</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- Card: Resume -->
+          <div class="bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all group">
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center font-bold">02</div>
+              <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">Resume Page</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Interactive timeline spanning Adaptive USA, InnerView Group, Digital Valley, Nerd Street, and Aramark, plus 3 degrees &amp; technical stack.
+              </p>
+            </div>
+            <button type="button" onclick="switchPage('resume')" class="mt-6 w-full py-2.5 px-4 rounded-xl bg-slate-800 group-hover:bg-indigo-600 text-slate-200 group-hover:text-white text-xs font-semibold transition-all flex items-center justify-between">
+              <span>Explore Resume</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- Card: Projects -->
+          <div class="bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all group">
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold">03</div>
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">Projects Page</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Deep-dive case studies on my $3M+ scoring product, AI call monitoring deployments, Fortune 50 telecom GTM audits, and 21 client engagements.
+              </p>
+            </div>
+            <button type="button" onclick="switchPage('projects')" class="mt-6 w-full py-2.5 px-4 rounded-xl bg-slate-800 group-hover:bg-emerald-600 text-slate-200 group-hover:text-white text-xs font-semibold transition-all flex items-center justify-between">
+              <span>View Projects (5+21)</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- Card: Hobbies -->
+          <div class="bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all group">
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center font-bold">04</div>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Hobbies Page</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Mustache Masters charity broadcasts, competitive Counter-Strike 2, Philadelphia outdoors and culinary exploration, and custom PC/AI builds.
+              </p>
+            </div>
+            <button type="button" onclick="switchPage('hobbies')" class="mt-6 w-full py-2.5 px-4 rounded-xl bg-slate-800 group-hover:bg-amber-600 text-slate-200 group-hover:text-white text-xs font-semibold transition-all flex items-center justify-between">
+              <span>See Life Outside Work</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         2. ABOUT ME PAGE
+         ========================================== -->
+    <section id="page-about" class="page-section space-y-10">
+      <!-- Header Banner -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10">
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+            About Me
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Bridging Strategy Consulting, 0-to-1 Product Execution &amp; Applied Data Science.
+          </h1>
+          <p class="text-slate-300 text-base leading-relaxed">
+            Based in <strong class="text-white">Philadelphia, PA</strong>, I've spent the past decade helping organizations turn ambiguous market opportunities into repeatable, measurable growth engines—whether advising Fortune 500 executives, scaling early-stage ventures 10x, or building net-new software and research products from scratch.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bio Narrative + Profile Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 space-y-6 bg-slate-900/70 border border-slate-800 rounded-3xl p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white">My Career Story</h2>
+          <div class="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+            <p>
+              My career started on the operational frontlines at <strong class="text-white">Aramark</strong> inside the <strong class="text-white">University of Pennsylvania's Chemistry Facilities</strong>, where I managed 25 unionized employees across 6 locations, restructured under-performing sites, and earned a Top 10% national <em>"Fast Tracked"</em> leadership designation before supporting the CMO and SVP of Strategy.
+            </p>
+            <p>
+              From there, I stepped into the hyper-growth startup world as <strong class="text-white">Chief of Staff to the CEO at Nerd Street (NSG)</strong>. In a single year, we scaled national deployment IT infrastructure, white-label licensing, and turnkey event teams—growing the company from $200K in seed funding ($2M valuation) to a <strong class="text-white">$20M valuation</strong>.
+            </p>
+            <p>
+              Over seven transformative years at <strong class="text-white">InnerView Group</strong> (2019–2026), I wore three progressive hats: scaling internal operations during a <strong class="text-white">200%+ headcount growth phase</strong> as Business Operations Manager, advising 20+ Fortune 500 and mid-market enterprises as Managing Consultant, and serving as <strong class="text-white">Product Manager</strong>—where I conceived and launched a proprietary research and scoring product that generated over <strong class="text-white">$3M in new revenue</strong> and lifted top-line company revenue by 15%.
+            </p>
+            <p>
+              In June 2026, I transitioned to <strong class="text-white">Adaptive USA</strong> as a <strong class="text-white">Manager</strong>, leading enterprise client engagements and strategic growth initiatives across key accounts, while completing my <strong class="text-white">Master of Applied Science in Data Science</strong> at the <strong class="text-white">Illinois Institute of Technology</strong> (Dec 2026).
+            </p>
+          </div>
+
+          <!-- Core Pillars Grid -->
+          <div class="pt-4 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
+              <div class="text-blue-400 font-bold text-sm mb-1">01. Concept-to-Delivery Product</div>
+              <p class="text-xs text-slate-400">Owning product governance, R&amp;D, packaging &amp; pricing, partner integrations, and roadmaps that cut delivery timelines by 33%.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
+              <div class="text-indigo-400 font-bold text-sm mb-1">02. Consultative GTM Alignment</div>
+              <p class="text-xs text-slate-400">Aligning internal sales channels, dealer networks, and customer journey maps so brand strategy translates into front-line conversion.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
+              <div class="text-emerald-400 font-bold text-sm mb-1">03. Applied Data Science &amp; AI</div>
+              <p class="text-xs text-slate-400">Combining Python, SQL, R, PyTorch, and LangChain with business acumen to deploy AI call monitoring and predictive scoring models.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
+              <div class="text-amber-400 font-bold text-sm mb-1">04. Purpose-Driven Community</div>
+              <p class="text-xs text-slate-400">Co-founding Mustache Masters 509(a)(2) to unite 750+ competitors and 61,000+ viewers around men's mental health and Movember.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Quick Facts & Industry Chart -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 space-y-4">
+            <h3 class="text-lg font-bold text-white">At a Glance</h3>
+            <dl class="space-y-3 text-sm">
+              <div class="flex justify-between py-2 border-b border-slate-800/80">
+                <dt class="text-slate-400">Location</dt>
+                <dd class="text-white font-medium">Philadelphia, PA</dd>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/80">
+                <dt class="text-slate-400">Current Role</dt>
+                <dd class="text-white font-medium">Manager, Adaptive USA</dd>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/80">
+                <dt class="text-slate-400">Graduate Study</dt>
+                <dd class="text-white font-medium">M.A.S. Data Science, Illinois Tech</dd>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/80">
+                <dt class="text-slate-400">Business Degrees</dt>
+                <dd class="text-white font-medium">MBA (University of Dayton) • BBA (Temple University)</dd>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/80">
+                <dt class="text-slate-400">Nonprofit Leadership</dt>
+                <dd class="text-white font-medium">Co-Founder &amp; President, Mustache Masters</dd>
+              </div>
+              <div class="flex justify-between py-2">
+                <dt class="text-slate-400">LinkedIn</dt>
+                <dd>
+                  <a href="https://www.linkedin.com/in/chris-palac" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline font-medium">linkedin.com/in/chris-palac ↗</a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Chart Container: Consulting Engagements by Industry -->
+          <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 space-y-3">
+            <div>
+              <h3 class="text-base font-bold text-white">Enterprise Consulting Footprint by Sector</h3>
+              <p class="text-xs text-slate-400">Distribution of 21+ enterprise engagements across industries</p>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="industryChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. RESUME PAGE
+         ========================================== -->
+    <section id="page-resume" class="page-section space-y-8">
+      <!-- Resume Header & Controls -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold uppercase tracking-wider">
+            Curriculum Vitae &amp; Experience
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-extrabold text-white">Christopher Palac</h1>
+          <p class="text-sm text-slate-300">
+            Philadelphia, PA • <a href="https://www.linkedin.com/in/chris-palac" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">linkedin.com/in/chris-palac</a>
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5 no-print">
+          <button type="button" onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-semibold border border-slate-700 transition-all">
+            Print / Save PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Section Filter Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900/60 border border-slate-800 rounded-2xl p-3 no-print">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <button type="button" id="res-filter-all" onclick="filterResumeSection('all')" class="res-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-blue-600 text-white">
+            All Sections
+          </button>
+          <button type="button" id="res-filter-experience" onclick="filterResumeSection('experience')" class="res-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">
+            Work Experience (8 Roles)
+          </button>
+          <button type="button" id="res-filter-education" onclick="filterResumeSection('education')" class="res-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">
+            Education &amp; Certifications
+          </button>
+          <button type="button" id="res-filter-skills" onclick="filterResumeSection('skills')" class="res-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">
+            Technical &amp; Product Skills
+          </button>
+        </div>
+        <div class="text-xs text-slate-400 pr-2">
+          Click any role card to toggle key deliverables &amp; metrics
+        </div>
+      </div>
+
+      <!-- Work Experience Block -->
+      <div id="resume-block-experience" class="space-y-4">
+        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+          <span>Professional Experience</span>
+        </h2>
+
+        <div id="experience-timeline" class="space-y-4">
+          <!-- Populated dynamically by renderResume() -->
+        </div>
+      </div>
+
+      <!-- Education & Certifications Block -->
+      <div id="resume-block-education" class="space-y-4 pt-2">
+        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+          <span>Education &amp; Executive Certifications</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
+            <div class="flex items-center justify-between text-xs text-blue-400 font-semibold">
+              <span>Jun 2025 – Dec 2026</span>
+              <span class="px-2 py-0.5 rounded bg-blue-500/15">In Progress</span>
+            </div>
+            <h3 class="text-base font-bold text-white">Master of Applied Science, Data Science (MAS-DS)</h3>
+            <p class="text-xs text-slate-300 font-medium">Illinois Institute of Technology — College of Computing</p>
+            <p class="text-xs text-slate-400 pt-1">Focus on machine learning, statistical modeling, Python data engineering, and applied AI analytics.</p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
+            <div class="flex items-center justify-between text-xs text-indigo-400 font-semibold">
+              <span>Nov 2019 – Dec 2020</span>
+              <span class="px-2 py-0.5 rounded bg-indigo-500/15">GPA: 3.8 / 4.0</span>
+            </div>
+            <h3 class="text-base font-bold text-white">Master of Business Administration (MBA)</h3>
+            <p class="text-xs text-slate-300 font-medium">University of Dayton — School of Business Administration</p>
+            <p class="text-xs text-slate-400 pt-1">Concentration in Business Management and Marketing; executive strategy &amp; commercial operations.</p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
+            <div class="flex items-center justify-between text-xs text-emerald-400 font-semibold">
+              <span>Sep 2012 – Jul 2016</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/15">Philadelphia, PA</span>
+            </div>
+            <h3 class="text-base font-bold text-white">Bachelor of Business Administration (BBA)</h3>
+            <p class="text-xs text-slate-300 font-medium">Temple University — Fox School of Business</p>
+            <p class="text-xs text-slate-400 pt-1">Major in Business Management; foundation in organizational leadership and operations.</p>
+          </div>
+        </div>
+
+        <!-- Certifications Bar -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-semibold text-amber-400 uppercase">Executive Specialization</div>
+              <div class="text-sm font-bold text-white mt-0.5">AI for Business Specialization</div>
+              <div class="text-xs text-slate-400">University of Pennsylvania — The Wharton School</div>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-300 text-xs font-semibold border border-amber-500/30">Wharton</span>
+          </div>
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-semibold text-emerald-400 uppercase">Industry Certification</div>
+              <div class="text-sm font-bold text-white mt-0.5">CX Journey Mapping Professional</div>
+              <div class="text-xs text-slate-400">Forrester Research</div>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-300 text-xs font-semibold border border-emerald-500/30">Forrester</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills & Technical Stack Block -->
+      <div id="resume-block-skills" class="space-y-4 pt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            <span>Skills, Analytics &amp; Tooling Stack</span>
+          </h2>
+          <div class="flex flex-wrap gap-1.5 no-print">
+            <button type="button" id="skill-cat-all" onclick="filterSkills('all')" class="skill-cat-btn px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white">All Skills</button>
+            <button type="button" id="skill-cat-data" onclick="filterSkills('data')" class="skill-cat-btn px-3 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">Data Science &amp; ML</button>
+            <button type="button" id="skill-cat-product" onclick="filterSkills('product')" class="skill-cat-btn px-3 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">Product &amp; Strategy</button>
+            <button type="button" id="skill-cat-business" onclick="filterSkills('business')" class="skill-cat-btn px-3 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">CRM &amp; Business Platforms</button>
+          </div>
+        </div>
+
+        <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated dynamically by renderSkills() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. PROJECTS PAGE
+         ========================================== -->
+    <section id="page-projects" class="page-section space-y-10">
+      <!-- Projects Header -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+          Portfolio &amp; Case Studies
+        </div>
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+          <div class="space-y-2 max-w-3xl">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Flagship Product Launches, Venture Initiatives &amp; 21 Enterprise Engagements.
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base">
+              Filter by domain below or click any flagship project card to inspect the full problem statement, architecture, and commercial impact.
+            </p>
+          </div>
+          <!-- Category Filter Pills -->
+          <div class="flex flex-wrap gap-1.5">
+            <button type="button" id="proj-filter-all" onclick="filterProjects('all')" class="proj-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white">All Flagship (5)</button>
+            <button type="button" id="proj-filter-product" onclick="filterProjects('product')" class="proj-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">0-to-1 Product &amp; GTM</button>
+            <button type="button" id="proj-filter-data" onclick="filterProjects('data')" class="proj-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">AI &amp; Data Science</button>
+            <button type="button" id="proj-filter-venture" onclick="filterProjects('venture')" class="proj-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white">Ventures &amp; Philanthropy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flagship Case Studies Grid -->
+      <div id="flagship-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated dynamically by renderProjects() -->
+      </div>
+
+      <!-- Interactive Enterprise Consulting Engagements Explorer (21 Clients) -->
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Enterprise Track Record (Updated 2026)</div>
+            <h2 class="text-xl sm:text-2xl font-bold text-white mt-1">Consulting Engagement Directory (21 Enterprise Workstreams)</h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">
+              Search by client or filter by sector across my Fortune 500 and mid-market consulting portfolio.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2.5">
+            <input type="text" id="client-search-input" oninput="filterClientsTable()" placeholder="Search client, industry, or keyword..." class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500" />
+            <select id="client-industry-select" onchange="filterClientsTable()" aria-label="Filter by Industry" class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-slate-200 focus:outline-none focus:border-blue-500">
+              <option value="all">All Industries (21)</option>
+              <option value="Telecommunications">Telecommunications (4)</option>
+              <option value="Building Materials">Building Materials (5)</option>
+              <option value="CPG">CPG &amp; Retail (4)</option>
+              <option value="Banking">Banking &amp; Insurance (4)</option>
+              <option value="Home Security & Care">Home Security &amp; Care (2)</option>
+              <option value="Pharmaceuticals">Pharmaceuticals (1)</option>
+              <option value="Software">Software (1)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-800">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-950/90 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
+                <th class="py-3.5 px-4 font-semibold">Client</th>
+                <th class="py-3.5 px-4 font-semibold">Industry Sector</th>
+                <th class="py-3.5 px-4 font-semibold">Engagement Scope &amp; Strategic Deliverable</th>
+              </tr>
+            </thead>
+            <tbody id="clients-table-body" class="divide-y divide-slate-800/70 text-sm">
+              <!-- Populated dynamically by filterClientsTable() -->
+            </tbody>
+          </table>
+        </div>
+        <div id="client-count-status" class="text-xs text-slate-400 text-right">Showing all 21 engagements</div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. HOBBIES PAGE
+         ========================================== -->
+    <section id="page-hobbies" class="page-section space-y-10">
+      <!-- Hobbies Hero Banner -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-wider">
+          Life Outside Work • Philadelphia &amp; Online
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Charity Esports, Philadelphia Outdoors &amp; Food Scene, Counter-Strike &amp; Custom PC Tinkering.
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Whether producing multi-day live charity tournaments for men's mental health, recharging on Philadelphia's local trails and exploring its culinary scene, or benchmarking custom GPU &amp; local AI builds, here is what energizes me outside the office.
+        </p>
+      </div>
+
+      <!-- Featured Visual Dual-Showcase: Mustache Masters + Wissahickon Creek -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Hobby Feature 1: Mustache Masters Charity Esports -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl">
+          <div>
+            <div class="relative h-64 w-full">
+              <img src="assets/images/mustache-masters-broadcast.jpg" alt="Mustache Masters esports charity broadcast production stage" class="w-full h-full object-cover max-w-full" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+              <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-blue-600/90 text-white text-xs font-bold uppercase tracking-wider shadow">
+                Co-Founder &amp; President • Since 2019
+              </div>
+            </div>
+            <div class="p-6 sm:p-8 space-y-4">
+              <h2 class="text-2xl font-bold text-white">Mustache Masters 509(a)(2) &amp; Movember Broadcasts</h2>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                I co-founded <strong class="text-white">Mustache Masters</strong> (<code class="text-blue-300">mustachemasters.org</code> / <code class="text-blue-300">@StacheMasters</code>) to rally the Counter-Strike community around men's mental and physical health. Across 6 annual weekend events (including <em>MM5: Olympiad</em> and <em>MM6: Original</em>), we have raised <strong class="text-white">$122,000+</strong> for the Movember Foundation.
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
+                  <div class="text-lg font-extrabold text-blue-400">$122K+</div>
+                  <div class="text-[11px] text-slate-400">Donations Raised</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
+                  <div class="text-lg font-extrabold text-indigo-400">1.6M+</div>
+                  <div class="text-[11px] text-slate-400">Minutes Watched</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
+                  <div class="text-lg font-extrabold text-emerald-400">750+</div>
+                  <div class="text-[11px] text-slate-400">CS Competitors</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
+                  <div class="text-lg font-extrabold text-amber-400">61,000+</div>
+                  <div class="text-[11px] text-slate-400">Unique Viewers</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 sm:px-8 pb-6 flex flex-wrap gap-3">
+            <a href="https://www.youtube.com/watch?v=HzW29OXA5dY" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-all">
+              Watch NBC Sports Feature ↗
+            </a>
+            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2718366308" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-all">
+              Custom Map: MM_Warehouse (Steam Workshop) ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Hobby Feature 2: Philadelphia Outdoors & Food Scene -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl">
+          <div>
+            <div class="relative h-64 w-full">
+              <img src="assets/images/philadelphia-outdoors-trail.jpg" alt="Scenic wooded park trail and historic stone bridge in Philadelphia" class="w-full h-full object-cover max-w-full" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+              <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-emerald-600/90 text-white text-xs font-bold uppercase tracking-wider shadow">
+                Philadelphia Outdoors &amp; Food Scene
+              </div>
+            </div>
+            <div class="p-6 sm:p-8 space-y-4">
+              <h2 class="text-2xl font-bold text-white">Exploring Philadelphia's Parks, Trails &amp; Culinary Scene</h2>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Calling <strong class="text-white">Philadelphia</strong> home, I love spending time outdoors recharging on the city's wooded park trails and exploring its vibrant culinary scene—from independent neighborhood roasters and casual gastropubs to discovering new regional cuisines across the greater Philly area.
+              </p>
+              <div class="space-y-2 pt-1">
+                <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Weekend Pursuits</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                  <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
+                    <div class="font-bold text-white">Local Trails &amp; Green Spaces</div>
+                    <div class="text-slate-400 mt-0.5">Unplugging on wooded creekside trails, scenic park paths, and outdoor weekend walks around Philadelphia.</div>
+                  </div>
+                  <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
+                    <div class="font-bold text-white">Philly Dining &amp; Roasters</div>
+                    <div class="text-slate-400 mt-0.5">Discovering independent coffee roasters, neighborhood spots, and standout local kitchens across the city.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 sm:px-8 pb-6">
+            <button type="button" onclick="openContactModal()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-all">
+              <span>Connect &amp; Share a Philly Recommendation</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Chart + Gaming & Hardware Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Cumulative Fundraising Growth Chart -->
+        <div class="lg:col-span-6 bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-white">Mustache Masters Fundraising Trajectory</h3>
+              <p class="text-xs text-slate-400">Cumulative charity funds raised across 6 annual weekend events (2019–2025)</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-blue-500/15 text-blue-300 text-xs font-semibold">$122,000+ Total</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="mustacheChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Competitive CS2 & Custom PC / AI Hardware -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-lg bg-indigo-500/15 text-indigo-300 text-xs font-semibold">Competitive Esports &amp; Strategy</span>
+              <span class="text-xs text-slate-400">CS:GO / CS2 • Match Telemetry</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Competitive Counter-Strike 2 &amp; Tactical Analytics</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              A longtime Counter-Strike competitor and tactician—analyzing match telemetry and performance data, refining team playbooks and utility execution, and organizing competitive community events with fellow players.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-lg bg-purple-500/15 text-purple-300 text-xs font-semibold">Hardware &amp; Local AI Tinkering</span>
+              <span class="text-xs text-slate-400">RTX 5090 • RTX 4080 • 7900 XTX • Agent Harnesses</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Custom PC Builds &amp; Local LLM Agent Experimentation</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              When I'm not writing Python or SQL for my Data Science degree at Illinois Tech, I love building and tuning high-performance PC hardware (RTX 5090, RTX 4080 &amp; Radeon 7900 XTX builds) and testing open-source agent harnesses like <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Nous Research's Hermes Agent</a> for automated diagnostics and local LLM workflows.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       CASE STUDY DETAIL MODAL
+       ========================================== -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true" aria-labelledby="modal-proj-title">
+    <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-5 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span id="modal-proj-badge" class="inline-block px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-300 mb-2">Case Study</span>
+          <h3 id="modal-proj-title" class="text-xl sm:text-2xl font-bold text-white">Project Title</h3>
+          <p id="modal-proj-subtitle" class="text-xs sm:text-sm text-slate-400 mt-0.5">Subtitle</p>
+        </div>
+        <button type="button" onclick="closeProjectModal()" aria-label="Close modal" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white">
+          ✕
+        </button>
+      </div>
+
+      <div id="modal-proj-body" class="space-y-4 text-sm text-slate-300 leading-relaxed">
+        <!-- Populated dynamically -->
+      </div>
+
+      <div id="modal-proj-links" class="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CONTACT / CONNECT MODAL
+       ========================================== -->
+  <div id="contact-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl">
+      <div class="flex items-start justify-between">
+        <div>
+          <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Get in Touch</span>
+          <h3 id="contact-modal-title" class="text-2xl font-bold text-white mt-0.5">Connect with Christopher Palac</h3>
+          <p class="text-xs text-slate-400 mt-1">Philadelphia, PA • Open to product, strategy, consulting &amp; data science conversations</p>
+        </div>
+        <button type="button" onclick="closeContactModal()" aria-label="Close contact modal" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white">
+          ✕
+        </button>
+      </div>
+
+      <!-- Direct Professional Channel -->
+      <div class="grid grid-cols-1 gap-3 text-xs">
+        <a href="https://www.linkedin.com/in/chris-palac" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-2xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-left transition-all flex items-center justify-between">
+          <div>
+            <div class="text-slate-400">Professional Network</div>
+            <div class="text-white font-semibold mt-0.5">linkedin.com/in/chris-palac</div>
+          </div>
+          <span class="text-blue-400 font-semibold">Open LinkedIn ↗</span>
+        </a>
+      </div>
+
+      <!-- Quick Note Generator (Opens mailto or saves note) -->
+      <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-3">
+        <div>
+          <label for="visitor-name" class="block text-xs font-medium text-slate-300 mb-1">Your Name &amp; Organization</label>
+          <input type="text" id="visitor-name" required placeholder="e.g., Jane Doe — Acme Corp" class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500" />
+        </div>
+        <div>
+          <label for="visitor-topic" class="block text-xs font-medium text-slate-300 mb-1">Topic</label>
+          <select id="visitor-topic" class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-slate-200 focus:outline-none focus:border-blue-500">
+            <option value="Enterprise Consulting / Adaptive USA">Enterprise Consulting / Adaptive USA</option>
+            <option value="Product Strategy & 0-to-1 Advisory">Product Strategy &amp; 0-to-1 Advisory</option>
+            <option value="Data Science & AI Collaboration">Data Science &amp; AI Collaboration</option>
+            <option value="Mustache Masters Charity Partnership">Mustache Masters Charity Partnership</option>
+          </select>
+        </div>
+        <div>
+          <label for="visitor-message" class="block text-xs font-medium text-slate-300 mb-1">Message</label>
+          <textarea id="visitor-message" rows="3" required placeholder="Share a brief note..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"></textarea>
+        </div>
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeContactModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-lg shadow-blue-600/25">
+            Copy Inquiry Note
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 z-50 hidden px-4 py-3 rounded-2xl bg-emerald-600 text-white text-xs sm:text-sm font-semibold shadow-2xl border border-emerald-400/40 flex items-center gap-2 no-print">
+    <span>✓</span>
+    <span id="toast-message">Action completed!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-8 mt-12 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-white">Christopher Palac</span>
+        <span>•</span>
+        <span>Philadelphia, PA</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4">
+        <button type="button" onclick="switchPage('home')" class="hover:text-white transition-colors">Home</button>
+        <button type="button" onclick="switchPage('about')" class="hover:text-white transition-colors">About Me</button>
+        <button type="button" onclick="switchPage('resume')" class="hover:text-white transition-colors">Resume</button>
+        <button type="button" onclick="switchPage('projects')" class="hover:text-white transition-colors">Projects</button>
+        <button type="button" onclick="switchPage('hobbies')" class="hover:text-white transition-colors">Hobbies</button>
+        <a href="https://www.linkedin.com/in/chris-palac" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">LinkedIn ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Data & Interactive Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
