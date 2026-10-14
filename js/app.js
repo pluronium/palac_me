@@ -236,6 +236,29 @@
     let industryChartInstance = null;
     let mustacheChartInstance = null;
 
+    // Keep the dark design as the default, and persist an explicit choice.
+    function updateThemeControls() {
+      const light = document.documentElement.classList.contains('theme-light');
+      const button = document.getElementById('theme-toggle');
+      if (!button) return;
+      button.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+      button.setAttribute('title', light ? 'Switch to dark mode' : 'Switch to light mode');
+      button.setAttribute('aria-pressed', String(light));
+      document.getElementById('theme-label').textContent = light ? 'Dark mode' : 'Light mode';
+      document.getElementById('theme-icon-sun').classList.toggle('hidden', light);
+      document.getElementById('theme-icon-moon').classList.toggle('hidden', !light);
+    }
+
+    function toggleTheme() {
+      const light = document.documentElement.classList.toggle('theme-light');
+      try {
+        localStorage.setItem('cp_portfolio_theme', light ? 'light' : 'dark');
+      } catch (e) {}
+      updateThemeControls();
+      if (industryChartInstance) initIndustryChart();
+      if (mustacheChartInstance) initMustacheChart();
+    }
+
     // Switch Active Page
     function switchPage(pageId) {
       currentPage = pageId;
@@ -547,6 +570,10 @@
     }
 
     // Charts Initialization
+    function chartTextColor() { return document.documentElement.classList.contains('theme-light') ? '#25443a' : '#cbd5e1'; }
+    function chartMutedColor() { return document.documentElement.classList.contains('theme-light') ? '#635844' : '#94a3b8'; }
+    function chartGridColor() { return document.documentElement.classList.contains('theme-light') ? 'rgba(36, 72, 57, 0.18)' : 'rgba(148, 163, 184, 0.12)'; }
+
     function initIndustryChart() {
       const canvas = document.getElementById('industryChart');
       if (!canvas || typeof Chart === 'undefined') return;
@@ -560,7 +587,9 @@
           datasets: [{
             label: 'Enterprise Engagements',
             data: [5, 4, 4, 4, 2, 2],
-            backgroundColor: [
+             backgroundColor: document.documentElement.classList.contains('theme-light') ? [
+               '#12382d', '#825022', '#32604b', '#9a6431', '#486e58', '#ad7a42'
+             ] : [
               'rgba(59, 130, 246, 0.85)',
               'rgba(99, 102, 241, 0.85)',
               'rgba(16, 185, 129, 0.85)',
@@ -580,11 +609,11 @@
           scales: {
             y: {
               beginAtZero: true,
-              ticks: { color: '#94a3b8', stepSize: 1 },
-              grid: { color: 'rgba(148, 163, 184, 0.12)' }
+               ticks: { color: chartMutedColor(), stepSize: 1 },
+               grid: { color: chartGridColor() }
             },
             x: {
-              ticks: { color: '#cbd5e1', font: { size: 11 } },
+               ticks: { color: chartTextColor(), font: { size: 11 } },
               grid: { display: false }
             }
           }
@@ -605,10 +634,10 @@
           datasets: [{
             label: 'Cumulative Funds Raised ($ USD)',
             data: [10000, 37304, 64734, 85734, 101734, 122000],
-            borderColor: '#3b82f6',
-            backgroundColor: 'rgba(59, 130, 246, 0.18)',
+             borderColor: document.documentElement.classList.contains('theme-light') ? '#12382d' : '#3b82f6',
+             backgroundColor: document.documentElement.classList.contains('theme-light') ? 'rgba(18, 56, 45, 0.15)' : 'rgba(59, 130, 246, 0.18)',
             borderWidth: 3,
-            pointBackgroundColor: '#60a5fa',
+             pointBackgroundColor: document.documentElement.classList.contains('theme-light') ? '#825022' : '#60a5fa',
             pointRadius: 5,
             fill: true,
             tension: 0.32
@@ -619,20 +648,20 @@
           maintainAspectRatio: false,
           plugins: {
             legend: {
-              labels: { color: '#cbd5e1', font: { size: 12 } }
+               labels: { color: chartTextColor(), font: { size: 12 } }
             }
           },
           scales: {
             y: {
               beginAtZero: true,
               ticks: {
-                color: '#94a3b8',
+                 color: chartMutedColor(),
                 callback: function(value) { return '$' + (value / 1000) + 'k'; }
               },
-              grid: { color: 'rgba(148, 163, 184, 0.12)' }
+               grid: { color: chartGridColor() }
             },
             x: {
-              ticks: { color: '#cbd5e1' },
+               ticks: { color: chartTextColor() },
               grid: { display: false }
             }
           }
@@ -642,6 +671,7 @@
 
     // Initialize Portfolio on Load
     window.addEventListener('DOMContentLoaded', function() {
+      updateThemeControls();
       renderResume();
       filterSkills('all');
       filterProjects('all');
