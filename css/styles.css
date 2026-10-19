@@ -168,6 +168,28 @@ body {
 .theme-light [class~="selection:bg-blue-500"]::selection { background: var(--juniper); color: #fff8eb; }
 @media print { .theme-light body { background-color: #fff !important; } }
 
+/* Home-page services CTA: separate from Tailwind theme overrides in both modes. */
+.adaptive-cta {
+  background: linear-gradient(110deg, #102a29, #162438);
+  border: 1px solid #385966;
+  color: #f8fafc;
+}
+.adaptive-cta-eyebrow { color: #86efac; }
+.adaptive-cta-description { color: #d1dce1; }
+.adaptive-cta-link { background: #34d399; color: #092c24; }
+.adaptive-cta-link:hover { background: #a7f3d0; }
+.adaptive-cta-link:focus-visible { outline: 3px solid #a7f3d0; outline-offset: 3px; }
+.theme-light .adaptive-cta {
+  background: #e3eadb;
+  border-color: #94a995;
+  color: var(--juniper);
+}
+.theme-light .adaptive-cta-eyebrow { color: var(--juniper-muted); }
+.theme-light .adaptive-cta-description { color: var(--ink); }
+.theme-light .adaptive-cta-link { background: var(--juniper); color: var(--paper); }
+.theme-light .adaptive-cta-link:hover { background: var(--juniper-muted); }
+.theme-light .adaptive-cta-link:focus-visible { outline-color: var(--juniper); }
+
 /* Floating assistant: intentionally uses explicit colors in both themes. */
 .portfolio-chat { position: fixed; right: 1rem; bottom: 1rem; z-index: 45; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; font-family: 'Inter', sans-serif; }
 .chat-toggle, .chat-form button { border: 0; border-radius: 1rem; background: #2563eb; color: white; padding: .8rem 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 10px 25px #0005; }
