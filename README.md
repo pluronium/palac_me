@@ -70,3 +70,19 @@ Then visit `http://localhost:8000` in your browser.
 
 - **Updating Experience, Skills, Projects, or Clients**: Open `js/app.js` and edit the `resumeExperience`, `skillsData`, `flagshipProjects`, or `clientEngagements` arrays at the top of the file.
 - **Updating Images**: Replace the files in `assets/images/` using the same filenames, or update the `src` attributes in `index.html`.
+
+## Portfolio Q&A assistant
+
+The floating chat widget is part of the static GitHub Pages site. Its API is a separate Cloudflare Worker in `worker/`; **GitHub Pages cannot run the Worker or protect an API key**. Until configured, the widget explicitly says it is not connected. No secret belongs in this repository or in browser JavaScript.
+
+### Deploy the Worker
+
+1. Review the public information in `index.html` and `js/app.js`. Generate the searchable snapshots from those files with `node scripts/build-knowledge.mjs`. Commit `worker/knowledge.json` whenever the portfolio changes; the Worker deploy bundles this file. Section links use `#home`, `#about`, `#resume`, `#projects`, or `#hobbies` and navigate within the single-page site.
+2. Set `ALLOWED_ORIGIN` in `worker/wrangler.jsonc` to your **exact** website origin (scheme + host, without trailing slash). For a custom domain, replace the example GitHub Pages origin. Browser preflight requests from other origins are rejected.
+3. Install or run Cloudflare's Wrangler CLI from your own Cloudflare account. From the repository root: `npx wrangler secret put OPENAI_API_KEY --config worker/wrangler.jsonc` and `npx wrangler deploy --config worker/wrangler.jsonc`. On PowerShell where `npm.ps1` is disabled, use `npx.cmd` instead. Provide your OpenAI API key **only** through the secret prompt, never as committed text.
+4. Paste the deployed Worker URL followed by `/chat` into `js/chat-config.js` as `window.PORTFOLIO_CHAT_ENDPOINT`, e.g. `https://your-worker.your-subdomain.workers.dev/chat`. Commit and redeploy the GitHub Pages site.
+5. Verify the chat from the actual hosted website: ask about the Adaptive USA role, the scoring product, and an unrelated question. Check source links, mobile layout, light mode, and the browser console for CORS errors.
+
+The Worker retrieves relevant public excerpts and sends only those excerpts and the visitor's question to OpenAI's `gpt-4.1-mini` model. It caps input, output, and request duration; returns no-store responses; and sets `store: false` for model requests. The chat is stateless and does not persist conversation history. An in-memory per-IP limit (10 requests/minute per Worker instance) is a **best-effort** abuse guard, not a distributed billing limit; set Cloudflare account-level rate limiting and spending alerts before public promotion. An Origin check limits browsers, **not** server-side clients. AI can still make mistakes, so users should verify answers against the linked pages. Since most information lives in a single URL, links reference site sections rather than individual paragraphs.
+
+Run `node --test worker/index.test.mjs` to test retrieval and request handling, and `node scripts/build-knowledge.mjs` to regenerate knowledge after edits. No npm dependencies are required for development or testing; deploying requires a Cloudflare account and access to the Wrangler CLI. The self-contained `standalone-single-file/index.html` is not updated with the assistant.

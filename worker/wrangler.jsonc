@@ -1,0 +1,11 @@
+{
+  "name": "palac-portfolio-chat",
+  "main": "index.mjs",
+  "compatibility_date": "2026-01-01",
+  "vars": {
+    "ALLOWED_ORIGIN": "https://pluronium.github.io"
+  },
+  "secrets": {
+    "required": ["OPENAI_API_KEY"]
+  }
+}

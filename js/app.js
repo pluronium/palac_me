@@ -202,6 +202,24 @@
         links: [
           { label: 'View Data Science Stack in Resume', page: 'resume' }
         ]
+      },
+      {
+        id: 'proj-adaptive-accounts',
+        category: 'data',
+        badge: 'Current Role • Strategic Accounts',
+        title: 'Strategic Accounts: AI, Data & Analytics Solutions',
+        subtitle: 'Adaptive USA • Manager of Strategic Accounts • Jun 2026 – Present',
+        metric: 'Enterprise Consulting • Client Solution Development',
+        summary: 'Manage strategic accounts at Adaptive USA, consulting with clients and developing solutions across AI, data, and analytics.',
+        details: [
+          'Partner with strategic account clients to understand their business needs and identify opportunities for AI, data, and analytics solutions.',
+          'Consult on solution approaches that connect client priorities with Adaptive USA’s AI, data management, business intelligence, and analytics capabilities.',
+          'Develop tailored solutions with clients as part of ongoing strategic account relationships.'
+        ],
+        links: [
+          { label: 'Visit Adaptive USA', url: 'https://adaptiveusa.com/' },
+          { label: 'View Experience in Resume', page: 'resume' }
+        ]
       }
     ];
 
@@ -261,7 +279,11 @@
 
     // Switch Active Page
     function switchPage(pageId) {
+      if (!['home', 'about', 'resume', 'projects', 'hobbies'].includes(pageId)) return;
       currentPage = pageId;
+      if (window.location.hash !== '#' + pageId) {
+        window.history.replaceState(null, '', '#' + pageId);
+      }
       const pages = ['home', 'about', 'resume', 'projects', 'hobbies'];
       pages.forEach(function(p) {
         const el = document.getElementById('page-' + p);
@@ -676,4 +698,12 @@
       filterSkills('all');
       filterProjects('all');
       filterClientsTable();
+      const initialPage = window.location.hash.slice(1);
+      if (['home', 'about', 'resume', 'projects', 'hobbies'].includes(initialPage)) {
+        switchPage(initialPage);
+      }
+    });
+    window.addEventListener('hashchange', function() {
+      const page = window.location.hash.slice(1);
+      if (['home', 'about', 'resume', 'projects', 'hobbies'].includes(page)) switchPage(page);
     });
