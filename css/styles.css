@@ -152,6 +152,10 @@ body {
   background-color: #d6e7d5 !important;
   color: var(--juniper) !important;
 }
+/* Keep the consulting directory row highlight consistent with project cards. */
+.theme-light #clients-table-body tr:hover {
+  background-color: #e3eadb !important;
+}
 .theme-light [class~="bg-blue-600"][class~="text-white"],
 .theme-light [class~="bg-blue-500"][class~="text-white"],
 .theme-light [class~="bg-blue-600/90"][class~="text-white"],
