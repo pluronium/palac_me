@@ -142,6 +142,16 @@ body {
 .theme-light [class~="hover:bg-blue-500"]:hover,
 .theme-light [class~="group-hover:bg-blue-600"]:hover,
 .theme-light .group:hover [class~="group-hover:bg-blue-600"] { background-color: var(--juniper-muted) !important; color: #fff8eb !important; }
+/* Keep project-card hover cues soft and legible against the Juniper light palette. */
+.theme-light #flagship-projects-grid > div:hover {
+  background-color: #e3eadb !important;
+  border-color: #94a995 !important;
+}
+.theme-light #flagship-projects-grid button:hover,
+.theme-light #flagship-projects-grid button:focus-visible {
+  background-color: #d6e7d5 !important;
+  color: var(--juniper) !important;
+}
 .theme-light [class~="bg-blue-600"][class~="text-white"],
 .theme-light [class~="bg-blue-500"][class~="text-white"],
 .theme-light [class~="bg-blue-600/90"][class~="text-white"],
