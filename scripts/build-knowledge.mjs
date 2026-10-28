@@ -26,7 +26,7 @@ for (let i = 0; i < pages.length; i++) {
   // Keep HTML section context bounded; the arrays below cover dynamic details separately.
   for (let at = 0; at < text.length; at += 1000) add(pages[i], pages[i][0].toUpperCase() + pages[i].slice(1), text.slice(at, at + 1100));
 }
-resumeExperience.forEach(x => add('resume', x.role + ' — ' + x.company, [x.period, x.summary, ...x.highlights].join(' ')));
+resumeExperience.forEach(x => add('resume', x.role + ' | ' + x.company, [x.period, x.summary, ...x.highlights].join(' ')));
 skillsData.forEach(x => add('resume', x.title, x.items.join(', ')));
 flagshipProjects.forEach(x => add('projects', x.title, [x.subtitle, x.metric, x.summary, ...x.details].join(' ')));
 clientEngagements.forEach(x => add('resume', x.client, x.industry + '. ' + x.brief));

@@ -168,11 +168,73 @@ body {
 .theme-light [class~="selection:bg-blue-500"]::selection { background: var(--juniper); color: #fff8eb; }
 @media print { .theme-light body { background-color: #fff !important; } }
 
+/* Connect resume roles without disturbing their expandable card layout. */
+#experience-timeline {
+  --timeline-gutter: 2rem;
+  --timeline-axis: .625rem;
+  padding-left: var(--timeline-gutter);
+}
+.experience-entry { position: relative; }
+.experience-entry::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--timeline-axis) - var(--timeline-gutter) - .5rem);
+  top: 1.5rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #60a5fa;
+  border: 3px solid #0f172a;
+  box-shadow: 0 0 0 2px #60a5fa;
+}
+.experience-entry:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--timeline-axis) - var(--timeline-gutter) - 1px);
+  top: 2rem;
+  bottom: -3rem;
+  width: 2px;
+  background: #475569;
+}
+.theme-light .experience-entry::before {
+  background: var(--juniper);
+  border-color: var(--paper);
+  box-shadow: 0 0 0 2px var(--juniper);
+}
+.theme-light .experience-entry:not(:last-child)::after { background: #94a995; }
+@media print {
+  .experience-entry::before { border-color: #fff; }
+  .experience-entry:not(:last-child)::after { background: #94a995; }
+  html.printing-resume .page-section { display: none !important; }
+  html.printing-resume #page-resume { display: block !important; }
+  html.printing-resume #resume-block-experience,
+  html.printing-resume #resume-block-education,
+  html.printing-resume #resume-block-skills { display: block !important; }
+  html.printing-resume body,
+  html.printing-resume #page-resume,
+  html.printing-resume #page-resume * {
+    background-color: #fff !important;
+    background-image: none !important;
+    color: #192f28 !important;
+    box-shadow: none !important;
+  }
+  html.printing-resume #page-resume .experience-entry,
+  html.printing-resume #page-resume #resume-block-education > .grid > div,
+  html.printing-resume #page-resume #skills-grid > div { break-inside: avoid; }
+}
+
 /* Home-page services CTA: separate from Tailwind theme overrides in both modes. */
 .adaptive-cta {
   background: linear-gradient(110deg, #102a29, #162438);
   border: 1px solid #385966;
   color: #f8fafc;
+  box-shadow: 0 0 0 1px rgb(52 211 153 / 18%), 0 0 24px rgb(52 211 153 / 16%);
+  transition: box-shadow .25s ease, border-color .25s ease;
+}
+.adaptive-cta:hover,
+.adaptive-cta:focus-within {
+  border-color: #56b999;
+  box-shadow: 0 0 0 1px rgb(52 211 153 / 34%), 0 0 36px rgb(52 211 153 / 28%);
 }
 .adaptive-cta-eyebrow { color: #86efac; }
 .adaptive-cta-description { color: #d1dce1; }
@@ -183,12 +245,19 @@ body {
   background: #e3eadb;
   border-color: #94a995;
   color: var(--juniper);
+  box-shadow: 0 0 0 1px rgb(18 56 45 / 12%), 0 0 22px rgb(18 56 45 / 12%);
+}
+.theme-light .adaptive-cta:hover,
+.theme-light .adaptive-cta:focus-within {
+  border-color: var(--juniper-muted);
+  box-shadow: 0 0 0 1px rgb(18 56 45 / 22%), 0 0 32px rgb(18 56 45 / 22%);
 }
 .theme-light .adaptive-cta-eyebrow { color: var(--juniper-muted); }
 .theme-light .adaptive-cta-description { color: var(--ink); }
 .theme-light .adaptive-cta-link { background: var(--juniper); color: var(--paper); }
 .theme-light .adaptive-cta-link:hover { background: var(--juniper-muted); }
 .theme-light .adaptive-cta-link:focus-visible { outline-color: var(--juniper); }
+@media print { .adaptive-cta { box-shadow: none !important; } }
 
 /* Floating assistant: intentionally uses explicit colors in both themes. */
 .portfolio-chat { position: fixed; right: 1rem; bottom: 1rem; z-index: 45; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; font-family: 'Inter', sans-serif; }

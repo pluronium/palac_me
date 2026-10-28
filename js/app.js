@@ -5,7 +5,7 @@
         company: 'Adaptive USA',
         role: 'Manager',
         location: 'Philadelphia, PA',
-        period: 'Jun 2026 – Present',
+        period: 'Jun 2026 to Present',
         badge: 'Current Role',
         summary: 'Leading enterprise consulting engagements, strategic account delivery, and commercial growth initiatives.',
         highlights: [
@@ -18,13 +18,13 @@
         company: 'InnerView Group',
         role: 'Product Manager (GTM & Product Development)',
         location: 'Bala Cynwyd, PA',
-        period: 'Dec 2022 – Jun 2026',
+        period: 'Dec 2022 to Jun 2026',
         badge: '$3M+ New Revenue',
         summary: 'Owned core product portfolio governance, 0-to-1 offering launches, and partner technology integrations.',
         highlights: [
           'Conceived, built, and launched a proprietary research and internal alignment scoring product that generated $3M+ in net-new revenue over three years and lifted top-line company revenue by 15%.',
           'Evolved core product portfolio, integrated partner technologies (including AI call monitoring platforms), and led Go-To-Market (GTM) strategy for 7+ new commercial offerings.',
-          'Led product governance, R&D, analytics, quality assurance, and roadmap execution across 10 core offerings—improving delivery timelines by 33%.'
+          'Led product governance, R&D, analytics, quality assurance, and roadmap execution across 10 core offerings, improving delivery timelines by 33%.'
         ]
       },
       {
@@ -32,7 +32,7 @@
         company: 'InnerView Group',
         role: 'Managing Consultant (Product & GTM Strategy)',
         location: 'Bala Cynwyd, PA',
-        period: 'Nov 2020 – Dec 2022',
+        period: 'Nov 2020 to Dec 2022',
         badge: '21+ Enterprise Clients',
         summary: 'Advised Fortune 500 and mid-market leaders on sales enablement, GTM alignment, and CX transformation.',
         highlights: [
@@ -45,7 +45,7 @@
         company: 'InnerView Group',
         role: 'Business Operations Manager (Operations & Scaling)',
         location: 'Bala Cynwyd, PA',
-        period: 'May 2019 – Nov 2020',
+        period: 'May 2019 to Nov 2020',
         badge: '+200% Headcount Growth',
         summary: 'Scaled internal company operations, talent management, and strategic execution during rapid expansion.',
         highlights: [
@@ -58,7 +58,7 @@
         company: 'Digital Valley',
         role: 'Independent Consultant (Scaling Strategy)',
         location: 'Philadelphia, PA',
-        period: 'Jan 2019 – Apr 2021',
+        period: 'Jan 2019 to Apr 2021',
         badge: 'Founder & SMB Advisory',
         summary: 'Provided independent management consulting in GTM strategy, product ideation, and startup scaling.',
         highlights: [
@@ -70,7 +70,7 @@
         company: 'Nerd Street (Nerd Street Gamers)',
         role: 'Chief of Staff to CEO (Strategy & Growth)',
         location: 'Philadelphia, PA',
-        period: 'Oct 2017 – Jul 2018',
+        period: 'Oct 2017 to Jul 2018',
         badge: '10x Valuation ($20M)',
         summary: 'Scaled national IT deployment infrastructure and white-label licensing during hyper-growth.',
         highlights: [
@@ -83,7 +83,7 @@
         company: 'Aramark',
         role: 'Marketing & Strategy Coordinator',
         location: 'Philadelphia, PA',
-        period: 'Jul 2017 – Oct 2017',
+        period: 'Jul 2017 to Oct 2017',
         badge: 'Executive Strategy',
         summary: 'Supported the Chief Marketing Officer and SVP of Strategy on enterprise strategic initiatives.',
         highlights: [
@@ -92,10 +92,10 @@
       },
       {
         id: 'exp-aramark-a2l',
-        company: 'Aramark (University of Pennsylvania — Chemistry Facilities)',
+        company: 'Aramark (University of Pennsylvania, Chemistry Facilities)',
         role: 'A2L Leadership Program Manager',
         location: 'Philadelphia, PA',
-        period: 'Jul 2016 – Jul 2017',
+        period: 'Jul 2016 to Jul 2017',
         badge: 'Top 10% Fast Tracked',
         summary: 'Managed 25 unionized employees across 6 UPenn locations and restructured under-performing sites.',
         highlights: [
@@ -108,7 +108,7 @@
     // 2. Skills Matrix Data
     const skillsData = [
       { category: 'data', title: 'Python & Data Engineering', items: ['Python', 'Pandas', 'NumPy', 'Seaborn', 'Pytest', 'DateTime Testing', 'SQL', 'Relational Databases', 'R', 'RStudio', 'XML', 'HTML', 'CSS'], level: 'Advanced' },
-      { category: 'data', title: 'Machine Learning, Cloud & BI', items: ['PyTorch', 'LangChain', 'Google Cloud Platform (GCP)', 'Tableau', 'Power BI', 'KNIME', 'IBM SPSS', 'Displayr', 'Google Analytics'], level: 'Advanced' },
+      { category: 'data', title: 'Machine Learning, Cloud & BI', items: ['PyTorch', 'LangChain', 'Google Cloud Platform (GCP)', 'AWS', 'Tableau', 'Power BI', 'KNIME', 'IBM SPSS', 'Displayr', 'Google Analytics'], level: 'Advanced' },
       { category: 'product', title: '0-to-1 Product Management', items: ['Concept-to-Delivery Lifecycle', 'Product Governance', 'Roadmapping', 'Packaging Strategy', 'Pricing Strategy', 'Partner Tech Integrations', 'Research', 'Development', 'Quality Assurance'], level: 'Expert' },
       { category: 'product', title: 'Go-To-Market & Consulting', items: ['B2B GTM Strategy', 'B2C GTM Strategy', 'Value-Based Selling', 'Consultative Selling', 'Forrester CX Journey Mapping', 'Dealer Alignment', 'Channel Alignment', 'Program Scaling', 'Operational Scaling'], level: 'Expert' },
       { category: 'product', title: 'Product & Agile Tooling', items: ['Jira', 'Confluence', 'Figma', 'Miro', 'Smartsheet', 'Wrike', 'ClickUp', 'Trello', 'Agile Sprint Governance'], level: 'Expert' },
@@ -122,7 +122,7 @@
         category: 'product',
         badge: '0-to-1 Commercial Launch',
         title: 'Proprietary CX & Internal Alignment Scoring Product',
-        subtitle: 'InnerView Group • Dec 2022 – Jun 2026',
+        subtitle: 'InnerView Group • Dec 2022 to Jun 2026',
         metric: '$3M+ New Revenue | +15% Top-Line Lift',
         summary: 'Designed, governed, and commercialized a proprietary research and scoring product that quantified internal stakeholder alignment and customer experience gaps for Fortune 500 enterprises.',
         details: [
@@ -138,8 +138,8 @@
         id: 'proj-mustache',
         category: 'venture',
         badge: '509(a)(2) Nonprofit & Esports',
-        title: 'Mustache Masters Charity Esports Series (Seasons 1–6)',
-        subtitle: 'Co-Founder & President • 2019 – Present',
+        title: 'Mustache Masters Charity Esports Series (Seasons 1 to 6)',
+        subtitle: 'Co-Founder & President • 2019 to Present',
         metric: '$122,000+ Raised | 1.6M+ Mins Watched',
         summary: 'Co-founded and scaled an annual Counter-Strike (CS:GO / CS2) charity tournament and live broadcast benefiting the Movember Foundation and men\'s mental health awareness.',
         details: [
@@ -191,13 +191,13 @@
         category: 'data',
         badge: 'Data Science & Research',
         title: 'Applied Data Science, Pandas Time-Series & AI Market Research',
-        subtitle: 'Illinois Tech MAS-DS & Enterprise Sales Research • 2025 – 2026',
+        subtitle: 'Illinois Tech MAS-DS & Enterprise Sales Research • 2025 to 2026',
         metric: 'Python / Pandas • AI Infrastructure & SPM Analysis',
         summary: 'Graduate data science engineering in Python/Pandas alongside comprehensive market research on AI-driven Sales Performance Management (SPM) and AI data center compute demand.',
         details: [
           'Engineered and inspected Python Pandas datetime array and conversion test suites (datetimes.py, test_to_datetime.py, _test_decorators.py) covering timezone localization, ISO8601 parsing, and NaT coercion.',
           'Authored in-depth industry whitepapers on "Sales Performance Consulting Trends for Large US Enterprises ($100M+)" and "Navigating the Customer-Centric Shift: Value-Based vs. Consultative Selling in B2B & B2C".',
-          'Modeled hyperscaler and enterprise share of AI accelerator data center compute demand across leading global cloud providers ($200B+–$600B+ revenue tech giants) and frontier AI research laboratories.'
+          'Modeled hyperscaler and enterprise share of AI accelerator data center compute demand across leading global cloud providers (tech giants with revenue from $200B+ to $600B+) and frontier AI research laboratories.'
         ],
         links: [
           { label: 'View Data Science Stack in Resume', page: 'resume' }
@@ -208,7 +208,7 @@
         category: 'data',
         badge: 'Current Role • Strategic Accounts',
         title: 'Strategic Accounts: AI, Data & Analytics Solutions',
-        subtitle: 'Adaptive USA • Manager of Strategic Accounts • Jun 2026 – Present',
+        subtitle: 'Adaptive USA • Manager of Strategic Accounts • Jun 2026 to Present',
         metric: 'Enterprise Consulting • Client Solution Development',
         summary: 'Manage strategic accounts at Adaptive USA, consulting with clients and developing solutions across AI, data, and analytics.',
         details: [
@@ -229,17 +229,17 @@
       { client: 'Major US Broadband & Telecom Operator ($9B+ Annual Revenue)', industry: 'Telecommunications', brief: 'Designed customer retention processes and led consultation across customer care and sales channels.' },
       { client: 'National Exterior Building Products Manufacturer ($1.4B+ Annual Revenue)', industry: 'Building Materials', brief: 'Aligned national dealer network for exterior siding products Go-To-Market (GTM) approach.' },
       { client: 'Fortune 500 High-Net-Worth Specialty Insurer ($12B+ Parent Revenue)', industry: 'Banking', brief: 'Conducted internal portfolio research and aligned high-net-worth insurance dealer network messaging.' },
-      { client: 'Fortune 50 Telecom & Media Leader — Software Division ($120B+ Annual Revenue)', industry: 'Software', brief: 'Developed outbound prospecting methodology and GTM strategy for new B2B/B2C software offering.' },
-      { client: 'Fortune 50 Telecom & Media Leader — MDU-Bulk Division ($120B+ Annual Revenue)', industry: 'Telecommunications', brief: 'Audited the USA Multi-Dwelling Unit (MDU) process across 17 regions and built a unified national approach.' },
-      { client: 'Fortune 50 Telecom & Media Leader — Sales Research ($120B+ Annual Revenue)', industry: 'Telecommunications', brief: 'Researched emerging sales behavior trends across omnichannel retail, care, and field channels.' },
-      { client: 'Fortune 50 Telecom & Media Leader — Enterprise Tech ($120B+ Annual Revenue)', industry: 'Telecommunications', brief: 'Served as Project Manager for enterprise technology integration initiatives.' },
+      { client: 'Fortune 50 Telecom & Media Leader, Software Division ($120B+ Annual Revenue)', industry: 'Software', brief: 'Developed outbound prospecting methodology and GTM strategy for new B2B/B2C software offering.' },
+      { client: 'Fortune 50 Telecom & Media Leader, MDU-Bulk Division ($120B+ Annual Revenue)', industry: 'Telecommunications', brief: 'Audited the USA Multi-Dwelling Unit (MDU) process across 17 regions and built a unified national approach.' },
+      { client: 'Fortune 50 Telecom & Media Leader, Sales Research ($120B+ Annual Revenue)', industry: 'Telecommunications', brief: 'Researched emerging sales behavior trends across omnichannel retail, care, and field channels.' },
+      { client: 'Fortune 50 Telecom & Media Leader, Enterprise Tech ($120B+ Annual Revenue)', industry: 'Telecommunications', brief: 'Served as Project Manager for enterprise technology integration initiatives.' },
       { client: 'Global Fortune 500 Biopharmaceutical Leader ($38B+ Annual Revenue)', industry: 'Pharmaceuticals', brief: 'Led internal behavioral studies on field sales teams and Healthcare Professional (HCP) engagement for two vaccines.' },
       { client: 'National Non-Medical Home Care Franchise Network (170+ Locations)', industry: 'Home Security & Care', brief: 'Evolved brand positioning and supported national launch of franchise network messaging.' },
       { client: 'Global Audio & Video Conferencing Technology Leader ($2.5B+ Group Revenue)', industry: 'CPG', brief: 'Executed internal market study for new B2B/B2C market expansion of commercial webcam products.' },
       { client: 'Fortune 500 Global Flooring Manufacturer ($11B+ Annual Revenue)', industry: 'Building Materials', brief: 'Conducted internal research and delivered strategic recommendations for commercial & residential flooring portfolio.' },
-      { client: 'Fortune 500 Global Flooring Manufacturer — Sales Tech ($11B+ Annual Revenue)', industry: 'Building Materials', brief: 'Led implementation of AI call monitoring technology into enterprise sales channels.' },
+      { client: 'Fortune 500 Global Flooring Manufacturer, Sales Tech ($11B+ Annual Revenue)', industry: 'Building Materials', brief: 'Led implementation of AI call monitoring technology into enterprise sales channels.' },
       { client: 'Leading National Window & Door Manufacturer ($2B+ Annual Revenue)', industry: 'Building Materials', brief: 'Aligned national sales processes and developed consultative selling playbooks.' },
-      { client: 'Leading National Window & Door Manufacturer — AI Tech ($2B+ Annual Revenue)', industry: 'Building Materials', brief: 'Implemented AI call monitoring and conversation intelligence technology across sales channels.' },
+      { client: 'Leading National Window & Door Manufacturer, AI Tech ($2B+ Annual Revenue)', industry: 'Building Materials', brief: 'Implemented AI call monitoring and conversation intelligence technology across sales channels.' },
       { client: 'Regional Mutual Banking Institution ($2.8B+ Assets)', industry: 'Banking', brief: 'Advised executive team on Net Promoter Score (NPS) drivers and GTM strategy for key customer segments.' },
       { client: 'Mid-Market Commercial Printing & Packaging Solutions Provider', industry: 'CPG', brief: 'Delivered executive brand positioning and internal/external messaging alignment consultation.' },
       { client: 'International Food Import & CPG Distribution Leader ($500M+ Category)', industry: 'CPG', brief: 'Led internal research on product portfolio value proposition and commercial messaging.' },
@@ -349,8 +349,8 @@
           return '<li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300"><span class="text-blue-400 mt-1">•</span><span>' + b + '</span></li>';
         }).join('');
         return (
-          '<div class="bg-slate-900/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 transition-all">' +
-            '<button type="button" onclick="toggleRoleDetails(\'' + item.id + '\')" class="w-full text-left flex flex-col sm:flex-row sm:items-center justify-between gap-2 focus:outline-none">' +
+          '<div class="experience-entry bg-slate-900/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 transition-all">' +
+            '<button type="button" onclick="toggleRoleDetails(\'' + item.id + '\')" aria-expanded="' + isOpen + '" class="w-full text-left flex flex-col sm:flex-row sm:items-center justify-between gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-lg">' +
               '<div>' +
                 '<div class="flex flex-wrap items-center gap-2">' +
                   '<h3 class="text-base sm:text-lg font-bold text-white">' + item.role + '</h3>' +
@@ -373,6 +373,26 @@
     function toggleRoleDetails(roleId) {
       expandedRoles[roleId] = !expandedRoles[roleId];
       renderResume();
+    }
+
+    function printResume() {
+      const previousRoles = { ...expandedRoles };
+      const skillCategories = ['all', 'data', 'product', 'business'];
+      const selectedSkills = skillCategories.find(function(cat) {
+        const btn = document.getElementById('skill-cat-' + cat);
+        return btn && btn.classList.contains('bg-emerald-600');
+      }) || 'all';
+      document.documentElement.classList.add('printing-resume');
+      resumeExperience.forEach(function(item) { expandedRoles[item.id] = true; });
+      renderResume();
+      filterSkills('all');
+      window.addEventListener('afterprint', function restoreResumeView() {
+        expandedRoles = previousRoles;
+        renderResume();
+        filterSkills(selectedSkills);
+        document.documentElement.classList.remove('printing-resume');
+      }, { once: true });
+      window.print();
     }
 
     function filterResumeSection(section) {
@@ -556,7 +576,7 @@
       const name = document.getElementById('visitor-name').value.trim();
       const topic = document.getElementById('visitor-topic').value;
       const msg = document.getElementById('visitor-message').value.trim();
-      const formattedNote = '[Portfolio Inquiry] ' + topic + ' — ' + name + '\n\nHi Chris,\n\n' + msg + '\n\nBest regards,\n' + name;
+      const formattedNote = '[Portfolio Inquiry] ' + topic + ' | ' + name + '\n\nHi Chris,\n\n' + msg + '\n\nBest regards,\n' + name;
       closeContactModal();
       copyText(formattedNote, 'Inquiry note copied to clipboard! Connect on LinkedIn to send.');
     }
