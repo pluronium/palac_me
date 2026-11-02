@@ -252,7 +252,6 @@
     let currentPage = 'home';
     let expandedRoles = { 'exp-adaptive': true, 'exp-ivg-pm': true };
     let industryChartInstance = null;
-    let mustacheChartInstance = null;
 
     // Keep the dark design as the default, and persist an explicit choice.
     function updateThemeControls() {
@@ -274,17 +273,16 @@
       } catch (e) {}
       updateThemeControls();
       if (industryChartInstance) initIndustryChart();
-      if (mustacheChartInstance) initMustacheChart();
     }
 
     // Switch Active Page
     function switchPage(pageId) {
-      if (!['home', 'about', 'resume', 'projects', 'hobbies'].includes(pageId)) return;
+      if (!['home', 'about', 'resume', 'projects'].includes(pageId)) return;
       currentPage = pageId;
       if (window.location.hash !== '#' + pageId) {
         window.history.replaceState(null, '', '#' + pageId);
       }
-      const pages = ['home', 'about', 'resume', 'projects', 'hobbies'];
+      const pages = ['home', 'about', 'resume', 'projects'];
       pages.forEach(function(p) {
         const el = document.getElementById('page-' + p);
         if (el) {
@@ -327,8 +325,6 @@
       // Initialize or resize charts when their page becomes visible
       if (pageId === 'about') {
         setTimeout(initIndustryChart, 60);
-      } else if (pageId === 'hobbies') {
-        setTimeout(initMustacheChart, 60);
       }
     }
 
@@ -663,54 +659,6 @@
       });
     }
 
-    function initMustacheChart() {
-      const canvas = document.getElementById('mustacheChart');
-      if (!canvas || typeof Chart === 'undefined') return;
-      if (mustacheChartInstance) {
-        mustacheChartInstance.destroy();
-      }
-      mustacheChartInstance = new Chart(canvas, {
-        type: 'line',
-        data: {
-          labels: ['S1 (2019)', 'S2 (2020)', 'S3 (2021)', 'S4 (2022)', 'S5 (2023)', 'S6 (2025)'],
-          datasets: [{
-            label: 'Cumulative Funds Raised ($ USD)',
-            data: [10000, 37304, 64734, 85734, 101734, 122000],
-             borderColor: document.documentElement.classList.contains('theme-light') ? '#12382d' : '#3b82f6',
-             backgroundColor: document.documentElement.classList.contains('theme-light') ? 'rgba(18, 56, 45, 0.15)' : 'rgba(59, 130, 246, 0.18)',
-            borderWidth: 3,
-             pointBackgroundColor: document.documentElement.classList.contains('theme-light') ? '#825022' : '#60a5fa',
-            pointRadius: 5,
-            fill: true,
-            tension: 0.32
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-               labels: { color: chartTextColor(), font: { size: 12 } }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: {
-                 color: chartMutedColor(),
-                callback: function(value) { return '$' + (value / 1000) + 'k'; }
-              },
-               grid: { color: chartGridColor() }
-            },
-            x: {
-               ticks: { color: chartTextColor() },
-              grid: { display: false }
-            }
-          }
-        }
-      });
-    }
-
     // Initialize Portfolio on Load
     window.addEventListener('DOMContentLoaded', function() {
       updateThemeControls();
@@ -719,11 +667,9 @@
       filterProjects('all');
       filterClientsTable();
       const initialPage = window.location.hash.slice(1);
-      if (['home', 'about', 'resume', 'projects', 'hobbies'].includes(initialPage)) {
-        switchPage(initialPage);
-      }
+      switchPage(['home', 'about', 'resume', 'projects'].includes(initialPage) ? initialPage : 'home');
     });
     window.addEventListener('hashchange', function() {
       const page = window.location.hash.slice(1);
-      if (['home', 'about', 'resume', 'projects', 'hobbies'].includes(page)) switchPage(page);
+      switchPage(['home', 'about', 'resume', 'projects'].includes(page) ? page : 'home');
     });

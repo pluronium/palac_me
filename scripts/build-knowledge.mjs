@@ -10,7 +10,7 @@ const dataSource = script.split('    // State Management')[0];
 const data = runInNewContext(dataSource + '\nJSON.stringify({resumeExperience,skillsData,flagshipProjects,clientEngagements})');
 const { resumeExperience, skillsData, flagshipProjects, clientEngagements } = JSON.parse(data);
 const records = [];
-const pages = ['home', 'about', 'resume', 'projects', 'hobbies'];
+const pages = ['home', 'about', 'resume', 'projects'];
 const decode = text => text.replace(/&(?:amp|lt|gt|quot|nbsp|#39);/g, entity => ({ '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&nbsp;': ' ', '&#39;': "'" })[entity]);
 const clean = text => decode(text.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 function add(page, title, content) {

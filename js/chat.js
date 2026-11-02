@@ -16,7 +16,7 @@
       const links = document.createElement('div');
       links.className = 'chat-sources';
       sources.forEach(function(source) {
-        if (!['home', 'about', 'resume', 'projects', 'hobbies'].includes(source.page)) return;
+        if (!['home', 'about', 'resume', 'projects'].includes(source.page)) return;
         const link = document.createElement('a');
         link.href = '#' + source.page;
         link.textContent = source.title;

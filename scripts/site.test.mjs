@@ -20,8 +20,16 @@ test('Adaptive USA CTA glows in both themes and does not glow in print', () => {
   assert.match(css, /@media print\s*\{\s*\.adaptive-cta\s*\{\s*box-shadow: none !important;/);
 });
 
-test('fundraising caption and total have separate stacked space', () => {
-  assert.match(html, /<!-- Cumulative Fundraising Growth Chart -->[\s\S]*?<div class="flex flex-col items-start gap-3">\s*<div>[\s\S]*?Mustache Masters Fundraising Trajectory[\s\S]*?\(2019 to 2025\)<\/p>\s*<\/div>\s*<span[^>]*>\$122,000\+ Total<\/span>/);
+test('hobbies section and navigation are absent from the public site and search index', () => {
+  const archive = readFileSync(resolve(root, 'archive/hobbies.html'), 'utf8');
+  const chat = readFileSync(resolve(root, 'js/chat.js'), 'utf8');
+  assert.match(archive, /<section id="page-hobbies"/);
+  assert.doesNotMatch(html, /page-hobbies|nav-hobbies|switchPage\('hobbies'\)|Hobbies Page/);
+  assert.doesNotMatch(js + chat, /'hobbies'|mustacheChart|initMustacheChart/);
+  assert.ok(JSON.parse(knowledge).every(record => record.page !== 'hobbies'));
+  const deploy = readFileSync(resolve(root, '.github/workflows/deploy.yml'), 'utf8');
+  assert.match(deploy, /path: '_site'/);
+  assert.doesNotMatch(deploy, /cp -R archive|cp -R standalone-single-file/);
 });
 
 test('home copy reflects the requested positioning and no site content uses long dashes', () => {
@@ -30,14 +38,6 @@ test('home copy reflects the requested positioning and no site content uses long
   assert.match(html, /Explore the roles, challenges, and opportunities that shaped my professional journey/);
   assert.doesNotMatch(html + js + knowledge, /[\u2013\u2014]/);
   assert.doesNotMatch(html + knowledge, /Fortune 50 telecom GTM audits/);
-});
-
-test('Counter-Strike is only described as part of Mustache Masters', () => {
-  const hobbies = html.split('<section id="page-hobbies"')[1].split('</section>')[0];
-  assert.equal((hobbies.match(/Counter-Strike|CS2|CS:GO/g) || []).length, 1);
-  assert.match(hobbies, /Mustache Masters<\/strong>[\s\S]*?Counter-Strike community/);
-  assert.doesNotMatch(hobbies, /Competitive Counter-Strike 2|Match Telemetry/);
-  assert.doesNotMatch(html.split('<!-- Card: Hobbies -->')[1].split('<!--')[0], /Counter-Strike|CS2/);
 });
 
 test('resume timeline connects cards and preserves expand and collapse', () => {
@@ -58,13 +58,13 @@ test('resume timeline connects cards and preserves expand and collapse', () => {
   assert.equal((container.innerHTML.match(/class="experience-entry /g) || []).length, 8);
 });
 
-test('AWS, two-line degrees, and the Mustache Masters website appear in the right places', () => {
+test('AWS, two-line degrees, and archived Mustache Masters website are in the right places', () => {
   const skillsData = runInNewContext(js + '\nskillsData', {
     window: { addEventListener() {} }
   });
   assert.ok(skillsData.find(group => group.title === 'Machine Learning, Cloud & BI').items.includes('AWS'));
   assert.match(html, /<span class="block">MBA \(University of Dayton\)<\/span><span class="block">BBA \(Temple University\)<\/span>/);
-  assert.match(html, /href="https:\/\/www\.mustachemasters\.org\/"[^>]*rel="noopener noreferrer"[^>]*>\s*Visit Mustache Masters/);
+  assert.match(readFileSync(resolve(root, 'archive/hobbies.html'), 'utf8'), /href="https:\/\/www\.mustachemasters\.org\/"[^>]*rel="noopener noreferrer"[^>]*>\s*Visit Mustache Masters/);
   assert.doesNotMatch(html, /Custom Map: MM_Warehouse \(Steam Workshop\)/);
 });
 
