@@ -32,6 +32,25 @@ test('hobbies section and navigation are absent from the public site and search 
   assert.doesNotMatch(deploy, /cp -R archive|cp -R standalone-single-file/);
 });
 
+test('social preview uses a deployable 1200 x 630 PNG in Open Graph and Twitter cards', () => {
+  const imagePath = 'assets/images/social-preview.png';
+  const image = readFileSync(resolve(root, imagePath));
+  assert.equal(image.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+  assert.equal(image.readUInt32BE(16), 1200);
+  assert.equal(image.readUInt32BE(20), 630);
+  const url = 'https://pluronium.github.io/palac_me/' + imagePath;
+  assert.ok(html.includes(`<meta property="og:image" content="${url}">`));
+  assert.ok(html.includes(`<meta name="twitter:image" content="${url}">`));
+  assert.match(html, /<meta property="og:image:alt" content="[^"]+">/);
+  assert.match(html, /<meta property="og:image:alt" content="[^"]*Product \| Strategy \| Development[^"]*deep forest green">/);
+  const generator = readFileSync(resolve(root, 'scripts/generate-social-preview.ps1'), 'utf8');
+  assert.match(generator, /Text 'Product \| Strategy \| Development'/);
+  assert.match(generator, /\(Color 13 38 32\), \(Color 23 49 40\)/);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image">/);
+  const deploy = readFileSync(resolve(root, '.github/workflows/deploy.yml'), 'utf8');
+  assert.match(deploy, /cp assets\/images\/social-preview\.png _site\/assets\/images\//);
+});
+
 test('home copy reflects the requested positioning and no site content uses long dashes', () => {
   assert.match(html, /Fortune 50 national operations audit and unification playbook/);
   assert.match(html, /consulting rigor, a product builder's mindset, and solution architecture/);

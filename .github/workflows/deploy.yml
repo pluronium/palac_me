@@ -33,6 +33,7 @@ jobs:
           mkdir -p _site/assets/images
           cp assets/favicon.svg _site/assets/
           cp assets/images/christopher-palac-headshot.jpg _site/assets/images/
+          cp assets/images/social-preview.png _site/assets/images/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

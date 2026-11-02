@@ -13,7 +13,8 @@ Personal portfolio website for **Christopher Palac** (Product, GTM Strategy, Man
 ├── assets/
 │   ├── favicon.svg                               # Custom CP monogram vector favicon
 │   └── images/
-│       └── christopher-palac-headshot.jpg        # Homepage hero portrait
+│       ├── christopher-palac-headshot.jpg        # Homepage hero portrait
+│       └── social-preview.png                    # 1200 x 630 social link preview
 ├── archive/                                      # Hobbies section, images and older HTML copies (not deployed)
 ├── .github/
 │   └── workflows/
@@ -28,7 +29,7 @@ Personal portfolio website for **Christopher Palac** (Product, GTM Strategy, Man
 
 The GitHub Actions workflow stages only the public site in `_site/` before deploying it. **Do not enable GitHub Pages “Deploy from a branch” on the repository root:** that would expose `archive/` and other repository files. The archive is retained in the repository but is not included in the Actions deployment. On a public GitHub repository, the archive remains visible in the source repository and Git history.
 
-To preview exactly what is deployed, use a local copy of `index.html`, `css/`, `js/`, `assets/favicon.svg`, and `assets/images/christopher-palac-headshot.jpg`. The hobbies content is kept in `archive/hobbies.html`, with its two images alongside it; earlier complete HTML copies are also in `archive/`.
+To preview exactly what is deployed, use a local copy of `index.html`, `css/`, `js/`, `assets/favicon.svg`, and the two public images in `assets/images/`. The hobbies content is kept in `archive/hobbies.html`, with its two images alongside it; earlier complete HTML copies are also in `archive/`.
 
 ### Option A: Drag-and-Drop via GitHub Web UI (No Terminal Needed)
 
@@ -70,6 +71,7 @@ Then visit `http://localhost:8000` in your browser.
 
 - **Updating Experience, Skills, Projects, or Clients**: Open `js/app.js` and edit the `resumeExperience`, `skillsData`, `flagshipProjects`, or `clientEngagements` arrays at the top of the file.
 - **Updating Images**: Replace the files in `assets/images/` using the same filenames, or update the `src` attributes in `index.html`.
+- **Link Preview**: `assets/images/social-preview.png` is a 1200 x 630 Open Graph/Twitter image. Regenerate it on Windows with `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/generate-social-preview.ps1`. The absolute image URLs in `index.html` assume the Pages site is at `https://pluronium.github.io/palac_me/`; change them if the site uses a custom domain or different repository path. Preview caches on social platforms may take time to refresh after deployment.
 
 ## Portfolio Q&A assistant
 
